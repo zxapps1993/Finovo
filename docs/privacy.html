@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finovo — Privacy Policy</title>
+    <meta name="description" content="Finovo Privacy Policy — what the app does with information on your device, and what it avoids doing.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="inner">
+            <a class="brand" href="index.html">Finovo</a>
+            <a class="navlink" href="index.html">Support</a>
+            <a class="navlink" href="privacy.html">Privacy</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="card">
+            <h1>Finovo Privacy Policy</h1>
+            <p class="subtitle"><strong>In effect from:</strong> June 11, 2026</p>
+
+            <p>Finovo is an iPhone and iPad app published by <strong>ZXApps</strong> (operated by the developer Ghayor Abbas, reachable at the contact address listed in <a href="#20-how-to-reach-us">§20</a>). It helps you track expenses and income, scan and organize receipts, manage wallets and budgets, follow recurring bills, and split costs with other people. This document explains, in plain language, what the app does with information on your device — and what it deliberately avoids doing.</p>
+
+            <p>In this document, "<strong>Finovo</strong>" or "the app" refers to the application; "<strong>ZXApps</strong>," "<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>" refers to the publisher.</p>
+
+            <p>The short version is below in <a href="#1-the-shortest-possible-summary">§1</a>. The long version takes the same statements apart and explains them piece by piece.</p>
+
+            <hr>
+
+            <h2 id="index">Index</h2>
+            <nav class="toc">
+                <ol>
+                    <li><a href="#1-the-shortest-possible-summary">The shortest possible summary</a></li>
+                    <li><a href="#2-how-finovo-is-built">How Finovo is built</a></li>
+                    <li><a href="#3-inventory-of-data-the-app-reads-and-stores">Inventory of data the app reads and stores</a></li>
+                    <li><a href="#4-things-finovo-never-does">Things Finovo never does</a></li>
+                    <li><a href="#5-every-permission-the-app-may-ask-for">Every permission the app may ask for</a></li>
+                    <li><a href="#6-where-your-data-physically-lives">Where your data physically lives</a></li>
+                    <li><a href="#7-network-behavior-of-the-app">Network behavior of the app</a></li>
+                    <li><a href="#8-advertising-and-google-admob">Advertising and Google AdMob</a></li>
+                    <li><a href="#9-subscriptions">Subscriptions</a></li>
+                    <li><a href="#10-notifications-and-reminders">Notifications and reminders</a></li>
+                    <li><a href="#11-apple-frameworks-the-app-relies-on">Apple frameworks the app relies on</a></li>
+                    <li><a href="#12-security-posture">Security posture</a></li>
+                    <li><a href="#13-use-by-minors">Use by minors</a></li>
+                    <li><a href="#14-controls-you-always-have-through-ios">Controls you always have through iOS</a></li>
+                    <li><a href="#15-notice-for-users-in-the-eu-the-eea-the-uk-and-switzerland">Notice for users in the EU, the EEA, the UK, and Switzerland</a></li>
+                    <li><a href="#16-notice-for-users-in-california">Notice for users in California</a></li>
+                    <li><a href="#17-notice-for-users-elsewhere">Notice for users elsewhere</a></li>
+                    <li><a href="#18-cross-border-transfers">Cross-border transfers</a></li>
+                    <li><a href="#19-updates-to-this-document">Updates to this document</a></li>
+                    <li><a href="#20-how-to-reach-us">How to reach us</a></li>
+                </ol>
+            </nav>
+
+            <hr>
+
+            <h2 id="1-the-shortest-possible-summary">1. The shortest possible summary</h2>
+            <p>If you stop reading after this section, take these facts with you:</p>
+            <ol>
+                <li>The financial data you enter — expenses, income, receipts, wallets, budgets, splits — is <strong>stored on your device</strong>. ZXApps does not operate a server that stores it.</li>
+                <li>The app never uploads your receipts, transactions, or attachments to us. Receipt text recognition runs <strong>on your device</strong>.</li>
+                <li><strong>iCloud sync is optional and off by default.</strong> If you turn it on, your data syncs only through <strong>your own private iCloud account</strong>; we never receive a copy.</li>
+                <li>We do <strong>not</strong> use any third-party analytics, attribution, or crash-reporting SDK.</li>
+                <li>The <strong>free tier shows ads through Google AdMob</strong>, which involves limited data processing by Google. <strong>Subscribing removes ads.</strong></li>
+                <li>We do <strong>not</strong> sell your personal information for money.</li>
+                <li>You can use the app as a <strong>Guest</strong> with no account, or with <strong>Sign in with Apple</strong>. We never ask for a password.</li>
+                <li>Permissions (Camera, Photos, Location, Notifications) are optional and independent. Denying one only disables that one feature.</li>
+                <li>Deleting the app from your device deletes the local data the app stored on that device.</li>
+            </ol>
+            <p>The remainder of this document expands on each of these claims so you can verify them.</p>
+
+            <hr>
+
+            <h2 id="2-how-finovo-is-built">2. How Finovo is built</h2>
+            <p>Finovo is what the iOS community calls a <strong>local-first</strong> app. Practically, that means:</p>
+            <ul>
+                <li>All of your financial records are created, stored, and analyzed on the same device you use. The app does not maintain a backend service, user database, or login system of its own.</li>
+                <li>Your data is held in an on-device database (Apple's <strong>SwiftData</strong>) and, only if you switch it on, mirrored to <strong>your private iCloud</strong> through Apple's CloudKit. There is no ZXApps-operated copy in the middle.</li>
+                <li>Receipt scanning uses Apple's on-device document camera and the <strong>Vision</strong> framework for text recognition. Receipt images are read and parsed locally and are never sent to us or to any third party for processing.</li>
+                <li>The one third-party component in the app is <strong>Google AdMob</strong>, used to show ads on the free tier. AdMob is described in detail in <a href="#8-advertising-and-google-admob">§8</a>. Apart from advertising, the app embeds no analytics, marketing, social-media, or external crash-reporting SDKs.</li>
+            </ul>
+            <p>The reason these architectural choices matter for privacy is straightforward: the app keeps your financial life on your device, and the only data that leaves it does so through services you control (iCloud, the App Store) or through advertising you can remove by subscribing.</p>
+
+            <hr>
+
+            <h2 id="3-inventory-of-data-the-app-reads-and-stores">3. Inventory of data the app reads and stores</h2>
+            <p>The sections below list, by category, the information Finovo touches while it runs. <strong>Except for advertising data described in <a href="#8-advertising-and-google-admob">§8</a>, every item here is processed and stored only on your device</strong> (and in your private iCloud if you enable sync).</p>
+
+            <h3>3.1 Account information</h3>
+            <p>If you choose <strong>Sign in with Apple</strong>, the app stores an Apple-provided user identifier and — only if you choose to share them on first sign-in — your name and email address (which may be Apple's private relay address). If you continue as a <strong>Guest</strong>, none of this is collected. This information stays on your device (and your private iCloud if sync is on). We never receive it on a server we control.</p>
+
+            <h3>3.2 The financial records you enter</h3>
+            <p>Finovo stores what you record, which may include: expenses and receipts, income, merchant and source names, amounts and currencies, dates, categories, notes, payment-method labels, wallets and account balances, budgets, recurring bills and subscriptions, and bill-split details — including names of people you add to a split.</p>
+
+            <h3>3.3 Receipt images and documents</h3>
+            <p>When you scan a receipt or attach an image or PDF, the file is stored with its record on your device (and your private iCloud if sync is on). Text recognition (OCR) runs <strong>on your device</strong> using Apple's Vision framework to suggest the amount, date, and merchant. <strong>Receipt images are never uploaded to us or to any third party for processing.</strong></p>
+
+            <h3>3.4 Your current location, on demand</h3>
+            <p>If you choose to add a place to an expense, the app uses your device location <strong>once, at that moment</strong>, and turns it into a readable place name. Location is used only when you request it, never in the background, and only the resulting place text is stored with that record. The app does not build a location history or derive your home or work address.</p>
+
+            <h3>3.5 App-internal state</h3>
+            <p>Finovo keeps a small amount of bookkeeping on the device: whether onboarding/setup is complete, your selected currency, notification preferences, your iCloud-sync choice, and a cached copy of your subscription status reported by StoreKit. Your profile name/email (from Sign in with Apple) and currency may sync through your private iCloud so your devices stay consistent.</p>
+
+            <hr>
+
+            <h2 id="4-things-finovo-never-does">4. Things Finovo never does</h2>
+            <p>For clarity, here are things the app does <strong>not</strong> do:</p>
+            <ul>
+                <li>It does not sell your personal information for money.</li>
+                <li>It does not upload your receipts, transactions, balances, or attachments to a ZXApps server — there is no such server.</li>
+                <li>It does not use a third-party <strong>analytics</strong> SDK, <strong>attribution</strong> SDK, or external <strong>crash reporter</strong>. (Firebase was removed from the app.)</li>
+                <li>It does not use your financial data to target ads. Advertising data and your financial records are kept entirely separate.</li>
+                <li>It does not read your messages, browsing history, health data, or data from other apps.</li>
+                <li>It does not require you to create an account or share a password.</li>
+                <li>It does not perform background location tracking.</li>
+            </ul>
+            <p>The single exception to "nothing leaves the device" is the advertising on the free tier, which is explained honestly and in full in <a href="#8-advertising-and-google-admob">§8</a>.</p>
+
+            <hr>
+
+            <h2 id="5-every-permission-the-app-may-ask-for">5. Every permission the app may ask for</h2>
+            <p>Finovo requests only the permissions below, and only at the moment a feature you tapped on requires them.</p>
+            <table>
+                <thead>
+                    <tr><th>iOS permission</th><th>Why it is needed</th><th>When the prompt appears</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Camera</td><td>Scanning a receipt to pre-fill an expense.</td><td>The first time you start a receipt scan.</td></tr>
+                    <tr><td>Photos</td><td>Attaching an existing image or PDF to a receipt.</td><td>Only when you pick a photo or file to attach.</td></tr>
+                    <tr><td>Location — When In Use</td><td>Adding a place name to an expense.</td><td>Only when you tap to add a location to an expense.</td></tr>
+                    <tr><td>Notifications</td><td>Sending the expense reminders and budget alerts you opt into.</td><td>When you turn on reminders or alerts inside the app.</td></tr>
+                    <tr><td>Tracking (App Tracking Transparency)</td><td>Permission for personalized ads, if personalized advertising is enabled.</td><td>Shown by iOS for personalized advertising; see <a href="#8-advertising-and-google-admob">§8</a>.</td></tr>
+                </tbody>
+            </table>
+            <p>Saying "no" to any prompt simply disables the feature that needed it (and, for tracking, results in non-personalized ads). The rest of the app continues to work.</p>
+
+            <hr>
+
+            <h2 id="6-where-your-data-physically-lives">6. Where your data physically lives</h2>
+            <p>Because everything except advertising data is on-device, it helps to know which location holds what:</p>
+            <table>
+                <thead>
+                    <tr><th>Bucket</th><th>What's inside</th><th>When it goes away</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Standard UserDefaults</td><td>App preferences, setup/onboarding flags, selected currency, notification settings, iCloud-sync choice, cached subscription state, and your Apple sign-in identifier/name/email.</td><td>When you uninstall the app or sign out (session identity is cleared on sign-out).</td></tr>
+                    <tr><td>Local SwiftData store</td><td>Your expenses, income, receipts, wallets, budgets, splits, categories, and recurring items.</td><td>When you delete the records, or when you uninstall the app.</td></tr>
+                    <tr><td>External file storage</td><td>Receipt images and attached documents.</td><td>When you delete the attachment or uninstall the app.</td></tr>
+                    <tr><td>Your private iCloud (optional)</td><td>A synced copy of the above, plus your profile name/email and currency, if you turn on iCloud sync.</td><td>When you turn off sync and remove Finovo's data via iOS Settings &rarr; [your name] &rarr; iCloud.</td></tr>
+                </tbody>
+            </table>
+            <p>Nothing in this table is uploaded to ZXApps. On-device storage relies on the same hardware-backed device encryption iOS provides whenever your device is locked.</p>
+
+            <hr>
+
+            <h2 id="7-network-behavior-of-the-app">7. Network behavior of the app</h2>
+            <p>Finovo does not contact a ZXApps-owned server — there isn't one. Outbound network activity during use comes from these sources:</p>
+            <ul>
+                <li><strong>Google AdMob</strong> requests ads from Google's ad servers on the free tier. This is described in <a href="#8-advertising-and-google-admob">§8</a>.</li>
+                <li><strong>StoreKit</strong> contacts Apple's App Store servers when you view subscription options, purchase, restore, or when your entitlement is refreshed. Operated by Apple, not by us.</li>
+                <li><strong>iCloud / CloudKit</strong> synchronizes your data with your private iCloud account, if you enable sync. Operated by Apple.</li>
+                <li><strong>MapKit / Apple's reverse-geocoder</strong> may turn a coordinate into a readable place name when you add a location to an expense. This call goes to Apple, not to us.</li>
+            </ul>
+            <p>Apart from AdMob, the app makes <strong>no</strong> analytics requests, telemetry pings, attribution callbacks, or webhook calls to any third party, and sends none of your financial data anywhere.</p>
+
+            <hr>
+
+            <h2 id="8-advertising-and-google-admob">8. Advertising and Google AdMob</h2>
+            <p>The free tier of Finovo is supported by ads served through <strong>Google AdMob</strong> (operated by Google). This is the one part of the app where data is processed by a third party, so here is the full picture:</p>
+            <ul>
+                <li><strong>Content controls.</strong> We configure AdMob to <strong>exclude adult (18+), gambling, and sexually explicit ad content</strong> to suit a personal-finance audience. We do not control, and cannot guarantee, the specific ads delivered.</li>
+                <li><strong>Data Google may process.</strong> To serve, cap, and measure ads and to detect fraud, Google and its ad-technology partners may process a device advertising identifier, IP address, coarse (IP-derived) location, device and operating-system information, and ad-interaction events. Google acts as an independent party for this processing under its own policies.</li>
+                <li><strong>Your financial data is never used for ads.</strong> Advertising runs separately from your records; the app does not share your transactions, receipts, or balances with advertisers.</li>
+                <li><strong>Personalized vs. non-personalized ads and App Tracking Transparency.</strong> If personalized advertising is enabled, iOS will show Apple's <strong>App Tracking Transparency (ATT)</strong> prompt asking your permission to track. If you <strong>deny</strong> (or if only non-personalized ads are used), you will see <strong>non-personalized/contextual</strong> ads, which use limited data for frequency capping and measurement but not for cross-app tracking. You can change this anytime in <strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking</strong> and <strong>&rarr; Apple Advertising</strong>.</li>
+                <li><strong>Google's policies.</strong> Google's handling of this data is described at <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> and <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>. AdMob specifics are at <a href="https://support.google.com/admob/answer/6128543">support.google.com/admob/answer/6128543</a>.</li>
+                <li><strong>Removing ads.</strong> Purchasing a subscription removes ads and the associated ad processing.</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="9-subscriptions">9. Subscriptions</h2>
+            <p>Finovo is free to install and use on an ad-supported basis. Advanced features and an ad-free experience are unlocked through an optional auto-renewing subscription, sold by Apple via the App Store using Apple's <strong>StoreKit</strong> framework.</p>
+            <p>What this means in practice:</p>
+            <ul>
+                <li>Apple — not us — sees your payment method, billing address, and Apple ID.</li>
+                <li>The only thing the app receives from StoreKit is a signed entitlement indicating whether your Apple ID currently has an active subscription. No payment identifiers travel with that signal.</li>
+                <li>Price, billing period, and any free trial are shown on the purchase screen before you buy.</li>
+                <li>Auto-renewal, cancellation, refunds, and Family Sharing are governed by Apple's standard subscription policies. You can manage or cancel a subscription at any time in <strong>Settings &rarr; [Your Name] &rarr; Subscriptions</strong> on your device.</li>
+            </ul>
+            <p>Apple's processing of your purchase is described in Apple's privacy policy and the Apple Media Services Terms.</p>
+
+            <hr>
+
+            <h2 id="10-notifications-and-reminders">10. Notifications and reminders</h2>
+            <p>If you turn them on, Finovo schedules <strong>local notifications</strong> (expense reminders and budget alerts) through iOS. These are produced by your device and never go through a push server. The app does not register for remote push notifications and never transmits a push device token. Adjust these anytime in <strong>Settings &rarr; Notifications &rarr; Finovo</strong>.</p>
+
+            <hr>
+
+            <h2 id="11-apple-frameworks-the-app-relies-on">11. Apple frameworks the app relies on</h2>
+            <p>For transparency, here are the Apple-provided system frameworks Finovo uses for user-facing features:</p>
+            <ul>
+                <li><strong>SwiftData</strong> and <strong>Foundation</strong> — local storage and standard utilities.</li>
+                <li><strong>CloudKit</strong> — optional sync to your private iCloud.</li>
+                <li><strong>AuthenticationServices</strong> — Sign in with Apple.</li>
+                <li><strong>VisionKit</strong> — the on-device document camera for receipt scanning.</li>
+                <li><strong>Vision</strong> — on-device text recognition (OCR) of scanned receipts.</li>
+                <li><strong>PhotosUI / PhotoKit</strong> — picking an image to attach.</li>
+                <li><strong>Core Location</strong> — only when you add a location to an expense.</li>
+                <li><strong>MapKit</strong> — turning a coordinate into a readable place name.</li>
+                <li><strong>StoreKit</strong> — subscriptions.</li>
+                <li><strong>UserNotifications</strong> — scheduling local reminders.</li>
+            </ul>
+            <p>The only third-party SDK in the app is <strong>Google Mobile Ads (AdMob)</strong>, covered in <a href="#8-advertising-and-google-admob">§8</a>.</p>
+
+            <hr>
+
+            <h2 id="12-security-posture">12. Security posture</h2>
+            <p>Because your financial data stays on the device (and your private iCloud), the security model is essentially the security model of iOS itself:</p>
+            <ul>
+                <li><strong>App sandbox.</strong> iOS prevents other apps from reading Finovo's local container.</li>
+                <li><strong>Hardware-backed encryption.</strong> When your device is locked, on-device storage is encrypted using the device's hardware keys.</li>
+                <li><strong>Private iCloud.</strong> When sync is on, data is stored in your own iCloud private database, accessible only through your Apple account — not by us.</li>
+                <li><strong>Least-privilege permissions.</strong> Each permission is requested only when the matching feature is used.</li>
+                <li><strong>No ZXApps server.</strong> Because the app never sends your financial data to a server we operate, classes of risk like "server breach" of your records do not apply.</li>
+            </ul>
+            <p>No technical system is ever provably perfect, but the smaller the surface area, the smaller the risk — and Finovo's is intentionally small.</p>
+
+            <hr>
+
+            <h2 id="13-use-by-minors">13. Use by minors</h2>
+            <p>Finovo is a general-audience finance utility and is not directed at children under <strong>13</strong>. We do not knowingly collect personal data from children under 13 (or under the higher digital age of consent where applicable, such as 16 in parts of the EU). Purchasing a subscription requires you to be 18 or older, or to have a parent's or guardian's consent. If you believe a minor has used Finovo in a way that raises a privacy concern, please write to the address in <a href="#20-how-to-reach-us">§20</a>.</p>
+
+            <hr>
+
+            <h2 id="14-controls-you-always-have-through-ios">14. Controls you always have through iOS</h2>
+            <p>You don't need to file a written request to control what Finovo can see. iOS gives you the tools:</p>
+            <ul>
+                <li><strong>Settings &rarr; Privacy &amp; Security &rarr; Camera / Photos / Location</strong> — grant, narrow, or revoke each permission independently.</li>
+                <li><strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking</strong> and <strong>&rarr; Apple Advertising</strong> — control ad tracking and personalization.</li>
+                <li><strong>Settings &rarr; Notifications &rarr; Finovo</strong> — mute reminders and alerts.</li>
+                <li><strong>Settings &rarr; [Your Name] &rarr; Subscriptions</strong> — cancel a subscription.</li>
+                <li><strong>Settings &rarr; [Your Name] &rarr; iCloud</strong> — remove Finovo's synced data from your iCloud.</li>
+                <li><strong>Long-press the Finovo icon &rarr; Remove App &rarr; Delete App</strong> — remove the app and its local data from the device.</li>
+            </ul>
+            <p>These controls are immediate and honored by iOS itself.</p>
+
+            <hr>
+
+            <h2 id="15-notice-for-users-in-the-eu-the-eea-the-uk-and-switzerland">15. Notice for users in the EU, the EEA, the UK, and Switzerland</h2>
+            <p>This section provides additional information required by the EU General Data Protection Regulation (GDPR), the UK GDPR, and the Swiss FADP.</p>
+            <p><strong>Controller.</strong> ZXApps, the publisher of Finovo, acts as the controller of the limited personal data processed in connection with the app. For advertising, <strong>Google</strong> also acts as a controller/processor of the data described in <a href="#8-advertising-and-google-admob">§8</a> under its own policies.</p>
+            <p><strong>Legal bases.</strong></p>
+            <ul>
+                <li><strong>Article 6(1)(b)</strong> — performance of a contract — when you ask the app to do something for you (record a transaction, scan a receipt, sync your data, process a subscription).</li>
+                <li><strong>Article 6(1)(a)</strong> — consent — for permissions you grant through iOS (Camera, Photos, Location, Notifications) and, where applicable, for personalized advertising via the ATT prompt. You can withdraw consent at any time.</li>
+                <li><strong>Article 6(1)(f)</strong> — legitimate interests — for keeping the app secure, remembering your preferences, and showing advertising that funds the free tier.</li>
+            </ul>
+            <p><strong>Your rights.</strong> Subject to GDPR conditions, you have the rights of access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction (Art. 18), portability (Art. 20), objection (Art. 21), not being subject to solely automated decision-making (Art. 22), which the app does not perform, and withdrawal of consent (Art. 7(3)).</p>
+            <p>Because Finovo keeps your records on your own device and iCloud, the fastest ways to exercise these rights are also the most direct: edit or delete records inside the app, revoke an iOS permission, turn off iCloud sync, or delete the app. For a written response about a specific GDPR right, write to the address in <a href="#20-how-to-reach-us">§20</a> and we will respond within one month (extendable by two months for complex matters, with notice to you).</p>
+            <p><strong>Complaints.</strong> You may lodge a complaint with your local supervisory authority:</p>
+            <ul>
+                <li>European Data Protection Board: <a href="https://edpb.europa.eu/">edpb.europa.eu</a></li>
+                <li>UK Information Commissioner's Office: <a href="https://ico.org.uk/">ico.org.uk</a></li>
+                <li>Swiss FDPIC: <a href="https://www.edoeb.admin.ch/">edoeb.admin.ch</a></li>
+            </ul>
+
+            <hr>
+
+            <h2 id="16-notice-for-users-in-california">16. Notice for users in California</h2>
+            <p>This section addresses disclosures expected under the California Consumer Privacy Act, as amended by the California Privacy Rights Act (the <strong>CCPA</strong>).</p>
+            <p><strong>Categories collected.</strong> Finovo stores the financial records and account information you provide on your device. For advertising on the free tier, identifiers (such as a device advertising identifier and IP address) and internet/network activity may be processed by Google as described in <a href="#8-advertising-and-google-admob">§8</a>.</p>
+            <p><strong>"Sale" and "sharing."</strong> We do <strong>not</strong> sell your personal information for money. However, the use of <strong>personalized advertising</strong> may be considered "sharing" of identifiers for "cross-context behavioral advertising" under the CCPA. <strong>You can opt out</strong> by declining the ATT prompt, using <strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking / Apple Advertising</strong>, or by subscribing to remove ads. We do not knowingly share the financial records you enter.</p>
+            <p><strong>Your CCPA rights.</strong> You have the right to know, to delete, to correct, to opt out of sale/sharing, to limit the use of sensitive personal information, and to be free from retaliation for exercising these rights. To submit a request, email the address in <a href="#20-how-to-reach-us">§20</a>; we will respond within the timeframes California law sets. Authorized agents may submit a request with proof of authorization.</p>
+
+            <hr>
+
+            <h2 id="17-notice-for-users-elsewhere">17. Notice for users elsewhere</h2>
+            <p>If you live in a jurisdiction not specifically named above — for example, Brazil (LGPD), Canada (PIPEDA), Australia (Privacy Act 1988), Japan (APPI), South Korea (PIPA), or others — many of the rights described in <a href="#15-notice-for-users-in-the-eu-the-eea-the-uk-and-switzerland">§15</a> and <a href="#16-notice-for-users-in-california">§16</a> have analogues in your local law. Because Finovo keeps your data on your device, the iOS-level controls in <a href="#14-controls-you-always-have-through-ios">§14</a> are usually the most direct way to enforce them. For a written response, write to the email in <a href="#20-how-to-reach-us">§20</a>.</p>
+
+            <hr>
+
+            <h2 id="18-cross-border-transfers">18. Cross-border transfers</h2>
+            <p>No international transfer of your financial records occurs through normal use of Finovo, because those records stay on your device and your private iCloud.</p>
+            <p>Advertising data processed by Google (see <a href="#8-advertising-and-google-admob">§8</a>) may be processed in countries other than yours; Google applies safeguards (such as standard contractual clauses) as required by law. If you email us, the content of that email passes through and is retained by the email service we use to read and reply to it.</p>
+
+            <hr>
+
+            <h2 id="19-updates-to-this-document">19. Updates to this document</h2>
+            <p>If we change this Privacy Policy, the <strong>"In effect from"</strong> date at the top will move. For material changes — for example, adding a new third-party SDK, or any change that alters the on-device-first nature of the app — we will additionally display a notice inside the app the next time you open it. Continued use of Finovo after a revised date is taken as acceptance of the revised text, except where local law requires explicit consent.</p>
+
+            <hr>
+
+            <h2 id="20-how-to-reach-us">20. How to reach us</h2>
+            <p>For any question, request, or report related to this Privacy Policy:</p>
+            <ul>
+                <li><strong>Publisher:</strong> ZXApps (Ghayor Abbas)</li>
+                <li><strong>Email:</strong> <a href="mailto:zxapps1993@gmail.com">zxapps1993@gmail.com</a></li>
+                <li><strong>Subject prefix that helps us route faster:</strong> "Privacy — Finovo —"</li>
+            </ul>
+            <p>We do our best to reply within the timeframes required by applicable law and to answer in plain language.</p>
+
+            <hr>
+
+            <p class="note">If you ever find a behavior of Finovo that does not match a statement in this document, please tell us. We treat any such mismatch as a bug to fix, not a definition to broaden.</p>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 ZXApps (Ghayor Abbas). All rights reserved.
+    </footer>
+</body>
+</html>
