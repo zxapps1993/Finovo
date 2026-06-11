@@ -64,7 +64,7 @@
                 <li>The app never uploads your receipts, transactions, or attachments to us. Receipt text recognition runs <strong>on your device</strong>.</li>
                 <li><strong>iCloud sync is optional and off by default.</strong> If you turn it on, your data syncs only through <strong>your own private iCloud account</strong>; we never receive a copy.</li>
                 <li>We do <strong>not</strong> use any third-party analytics, attribution, or crash-reporting SDK.</li>
-                <li>The <strong>free tier shows ads through Google AdMob</strong>, which involves limited data processing by Google. <strong>Subscribing removes ads.</strong></li>
+                <li>The <strong>free tier shows non-personalized ads through Google AdMob</strong> — no cross-app tracking and no App Tracking Transparency prompt. <strong>Subscribing removes ads.</strong></li>
                 <li>We do <strong>not</strong> sell your personal information for money.</li>
                 <li>You can use the app as a <strong>Guest</strong> with no account, or with <strong>Sign in with Apple</strong>. We never ask for a password.</li>
                 <li>Permissions (Camera, Photos, Location, Notifications) are optional and independent. Denying one only disables that one feature.</li>
@@ -132,10 +132,9 @@
                     <tr><td>Photos</td><td>Attaching an existing image or PDF to a receipt.</td><td>Only when you pick a photo or file to attach.</td></tr>
                     <tr><td>Location — When In Use</td><td>Adding a place name to an expense.</td><td>Only when you tap to add a location to an expense.</td></tr>
                     <tr><td>Notifications</td><td>Sending the expense reminders and budget alerts you opt into.</td><td>When you turn on reminders or alerts inside the app.</td></tr>
-                    <tr><td>Tracking (App Tracking Transparency)</td><td>Permission for personalized ads, if personalized advertising is enabled.</td><td>Shown by iOS for personalized advertising; see <a href="#8-advertising-and-google-admob">§8</a>.</td></tr>
                 </tbody>
             </table>
-            <p>Saying "no" to any prompt simply disables the feature that needed it (and, for tracking, results in non-personalized ads). The rest of the app continues to work.</p>
+            <p>Saying "no" to any prompt simply disables the feature that needed it. The rest of the app continues to work. Finovo does <strong>not</strong> show the App Tracking Transparency prompt, because it does not track you across other companies' apps or websites (see <a href="#8-advertising-and-google-admob">§8</a>).</p>
 
             <hr>
 
@@ -172,9 +171,9 @@
             <p>The free tier of Finovo is supported by ads served through <strong>Google AdMob</strong> (operated by Google). This is the one part of the app where data is processed by a third party, so here is the full picture:</p>
             <ul>
                 <li><strong>Content controls.</strong> We configure AdMob to <strong>exclude adult (18+), gambling, and sexually explicit ad content</strong> to suit a personal-finance audience. We do not control, and cannot guarantee, the specific ads delivered.</li>
-                <li><strong>Data Google may process.</strong> To serve, cap, and measure ads and to detect fraud, Google and its ad-technology partners may process a device advertising identifier, IP address, coarse (IP-derived) location, device and operating-system information, and ad-interaction events. Google acts as an independent party for this processing under its own policies.</li>
+                <li><strong>Non-personalized ads only.</strong> Finovo requests <strong>non-personalized (contextual)</strong> ads from AdMob. These are not based on a profile of your interests and do <strong>not</strong> track you across other companies' apps or websites. Because of this, Finovo does not use Apple's App Tracking Transparency prompt and does not access the device advertising identifier (IDFA) for tracking.</li>
+                <li><strong>Data Google may process.</strong> Even for non-personalized ads, to serve, cap, and measure ads and to detect fraud, Google may process limited data such as IP address, coarse (IP-derived) location, device and operating-system information, and ad-interaction events. Google acts as an independent party for this processing under its own policies.</li>
                 <li><strong>Your financial data is never used for ads.</strong> Advertising runs separately from your records; the app does not share your transactions, receipts, or balances with advertisers.</li>
-                <li><strong>Personalized vs. non-personalized ads and App Tracking Transparency.</strong> If personalized advertising is enabled, iOS will show Apple's <strong>App Tracking Transparency (ATT)</strong> prompt asking your permission to track. If you <strong>deny</strong> (or if only non-personalized ads are used), you will see <strong>non-personalized/contextual</strong> ads, which use limited data for frequency capping and measurement but not for cross-app tracking. You can change this anytime in <strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking</strong> and <strong>&rarr; Apple Advertising</strong>.</li>
                 <li><strong>Google's policies.</strong> Google's handling of this data is described at <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> and <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>. AdMob specifics are at <a href="https://support.google.com/admob/answer/6128543">support.google.com/admob/answer/6128543</a>.</li>
                 <li><strong>Removing ads.</strong> Purchasing a subscription removes ads and the associated ad processing.</li>
             </ul>
@@ -239,7 +238,6 @@
             <p>You don't need to file a written request to control what Finovo can see. iOS gives you the tools:</p>
             <ul>
                 <li><strong>Settings &rarr; Privacy &amp; Security &rarr; Camera / Photos / Location</strong> — grant, narrow, or revoke each permission independently.</li>
-                <li><strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking</strong> and <strong>&rarr; Apple Advertising</strong> — control ad tracking and personalization.</li>
                 <li><strong>Settings &rarr; Notifications &rarr; Finovo</strong> — mute reminders and alerts.</li>
                 <li><strong>Settings &rarr; [Your Name] &rarr; Subscriptions</strong> — cancel a subscription.</li>
                 <li><strong>Settings &rarr; [Your Name] &rarr; iCloud</strong> — remove Finovo's synced data from your iCloud.</li>
@@ -271,8 +269,8 @@
 
             <h2 id="16-notice-for-users-in-california">16. Notice for users in California</h2>
             <p>This section addresses disclosures expected under the California Consumer Privacy Act, as amended by the California Privacy Rights Act (the <strong>CCPA</strong>).</p>
-            <p><strong>Categories collected.</strong> Finovo stores the financial records and account information you provide on your device. For advertising on the free tier, identifiers (such as a device advertising identifier and IP address) and internet/network activity may be processed by Google as described in <a href="#8-advertising-and-google-admob">§8</a>.</p>
-            <p><strong>"Sale" and "sharing."</strong> We do <strong>not</strong> sell your personal information for money. However, the use of <strong>personalized advertising</strong> may be considered "sharing" of identifiers for "cross-context behavioral advertising" under the CCPA. <strong>You can opt out</strong> by declining the ATT prompt, using <strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking / Apple Advertising</strong>, or by subscribing to remove ads. We do not knowingly share the financial records you enter.</p>
+            <p><strong>Categories collected.</strong> Finovo stores the financial records and account information you provide on your device. For non-personalized advertising on the free tier, limited data (such as IP address, coarse location, and device/OS information) and ad-interaction activity may be processed by Google as described in <a href="#8-advertising-and-google-admob">§8</a>.</p>
+            <p><strong>"Sale" and "sharing."</strong> We do <strong>not</strong> sell your personal information, and because Finovo serves only <strong>non-personalized</strong> ads, we do <strong>not</strong> "share" personal information for "cross-context behavioral advertising" as defined by the CCPA. We do not knowingly share the financial records you enter. You can remove ads entirely by subscribing.</p>
             <p><strong>Your CCPA rights.</strong> You have the right to know, to delete, to correct, to opt out of sale/sharing, to limit the use of sensitive personal information, and to be free from retaliation for exercising these rights. To submit a request, email the address in <a href="#20-how-to-reach-us">§20</a>; we will respond within the timeframes California law sets. Authorized agents may submit a request with proof of authorization.</p>
 
             <hr>
