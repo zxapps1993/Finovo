@@ -39,7 +39,7 @@
                     <li><a href="#5-every-permission-the-app-may-ask-for">Every permission the app may ask for</a></li>
                     <li><a href="#6-where-your-data-physically-lives">Where your data physically lives</a></li>
                     <li><a href="#7-network-behavior-of-the-app">Network behavior of the app</a></li>
-                    <li><a href="#8-advertising-and-third-party-advertising-services">Advertising and third-party advertising services</a></li>
+                    <li><a href="#8-google-services-admob-firebase-analytics-and-crashlytics">Google services: AdMob, Firebase Analytics, and Crashlytics</a></li>
                     <li><a href="#9-subscriptions">Subscriptions</a></li>
                     <li><a href="#10-notifications-and-reminders">Notifications and reminders</a></li>
                     <li><a href="#11-apple-frameworks-the-app-relies-on">Apple frameworks the app relies on</a></li>
@@ -63,11 +63,11 @@
                 <li>The financial data you enter — expenses, income, receipts, wallets, budgets, splits — is <strong>stored on your device</strong>. ZXApps does not operate a server that stores it.</li>
                 <li>The app never uploads your receipts, transactions, or attachments to us. Receipt text recognition runs <strong>on your device</strong>.</li>
                 <li><strong>iCloud sync is optional and off by default.</strong> If you turn it on, your data syncs only through <strong>your own private iCloud account</strong>; we never receive a copy.</li>
-                <li>We use <strong>Google Firebase Analytics and Crashlytics</strong> for app-usage measurement and diagnostics. We do not send your transaction amounts, merchant names, notes, receipt images, balances, name, email, or Apple ID to those services.</li>
-                <li>The <strong>free tier shows ads through Google AdMob and third-party advertising partners</strong>. Depending on your region and choices, ads may be personalized or non-personalized. Finovo uses Apple's <strong>App Tracking Transparency (ATT)</strong> framework and requests authorization before allowing access to the advertising identifier or tracking across other companies' apps or websites. <strong>Subscribing removes ads.</strong></li>
+                <li>Production builds use <strong>Firebase Analytics and Firebase Crashlytics</strong> (Google services) to understand feature use, diagnose crashes, and improve reliability. We do not send amounts, merchant names, receipt contents, notes, balances, email addresses, or other user-entered financial content to these services.</li>
+                <li>Finovo shows ads through <strong>Google AdMob</strong>. The app may ask for App Tracking Transparency permission before loading an ad; denying it does not block the app or prevent contextual/limited ads.</li>
                 <li>We do <strong>not</strong> sell your personal information for money.</li>
                 <li>You can use the app as a <strong>Guest</strong> with no account, or with <strong>Sign in with Apple</strong>. We never ask for a password.</li>
-                <li>Permissions (Camera, Photos, Location, Notifications, and Tracking where requested) are optional and independent. Denying Tracking does not prevent you from using Finovo; you may still see non-personalized or contextual ads.</li>
+                <li>Permissions (Camera, Photos, Location, Notifications) are optional and independent. Denying one only disables that one feature.</li>
                 <li>Deleting the app from your device deletes the local data the app stored on that device.</li>
             </ol>
             <p>The remainder of this document expands on each of these claims so you can verify them.</p>
@@ -80,14 +80,14 @@
                 <li>All of your financial records are created, stored, and analyzed on the same device you use. The app does not maintain a backend service, user database, or login system of its own.</li>
                 <li>Your data is held in an on-device database (Apple's <strong>SwiftData</strong>) and, only if you switch it on, mirrored to <strong>your private iCloud</strong> through Apple's CloudKit. There is no ZXApps-operated copy in the middle.</li>
                 <li>Receipt scanning uses Apple's on-device document camera and the <strong>Vision</strong> framework for text recognition. Receipt images are read and parsed locally and are never sent to us or to any third party for processing.</li>
-                <li>Finovo uses <strong>Google Firebase Analytics and Crashlytics</strong> to measure feature usage and diagnose crashes, and <strong>Google AdMob plus participating advertising, bidding, mediation, and measurement partners</strong> to support the free tier. These services are described below. Finovo does not send them the financial content you enter.</li>
+                <li>Finovo includes Google services for three defined purposes: <strong>Google AdMob</strong> to show ads, <strong>Firebase Analytics</strong> to measure app and feature usage, and <strong>Firebase Crashlytics</strong> to diagnose crashes and non-fatal errors. These services are described in <a href="#8-google-services-admob-firebase-analytics-and-crashlytics">§8</a>. The app does not include a social-media SDK or a separate third-party attribution SDK.</li>
             </ul>
-            <p>The reason these architectural choices matter for privacy is straightforward: the app keeps your financial life on your device. Limited service data may leave the device through Apple services, Firebase, and advertising services, but your financial records and attachments are not uploaded to ZXApps, Firebase, or advertisers.</p>
+            <p>The reason these architectural choices matter for privacy is straightforward: the app keeps your financial life on your device. Only the limited service data described here leaves it through iCloud, the App Store, AdMob, Firebase Analytics, Firebase Crashlytics, or Apple location services.</p>
 
             <hr>
 
             <h2 id="3-inventory-of-data-the-app-reads-and-stores">3. Inventory of data the app reads and stores</h2>
-            <p>The sections below list, by category, the information Finovo touches while it runs. <strong>Your financial records and attachments are processed and stored only on your device</strong> (and in your private iCloud if you enable sync). Firebase service data and advertising data are described separately below.</p>
+            <p>The sections below list, by category, the information Finovo touches while it runs. Your financial records and user-entered content are processed and stored only on your device (and in your private iCloud if you enable sync). Limited advertising, app-activity, and diagnostic data is processed by Google as described in <a href="#8-google-services-admob-firebase-analytics-and-crashlytics">§8</a>.</p>
 
             <h3>3.1 Account information</h3>
             <p>If you choose <strong>Sign in with Apple</strong>, the app stores an Apple-provided user identifier and — only if you choose to share them on first sign-in — your name and email address (which may be Apple's private relay address). If you continue as a <strong>Guest</strong>, none of this is collected. This information stays on your device (and your private iCloud if sync is on). We never receive it on a server we control.</p>
@@ -104,9 +104,9 @@
             <h3>3.5 App-internal state</h3>
             <p>Finovo keeps a small amount of bookkeeping on the device: whether onboarding/setup is complete, your selected currency, notification preferences, your iCloud-sync choice, and a cached copy of your subscription status reported by StoreKit. Your profile name/email (from Sign in with Apple) and currency may sync through your private iCloud so your devices stay consistent.</p>
 
-            <h3 id="36-analytics-and-diagnostic-data">3.6 Analytics and diagnostic data</h3>
-            <p>In production builds, <strong>Firebase Analytics</strong> collects app interactions such as screen views and feature events. Events may include limited properties such as a category identifier, selected currency, recurrence frequency, wallet type, subscription status, whether an attachment was added, or a count of wallets or split participants. We use these signals to understand aggregate feature usage; we do not send transaction amounts, merchant or source names, notes, receipt images or OCR text, account balances, location text, names, email addresses, or Apple IDs.</p>
-            <p><strong>Firebase Crashlytics</strong> collects crash and diagnostic information such as crash stack traces, app version, device model, operating-system version, timestamps, and installation/session identifiers. Firebase assigns app-instance or installation identifiers to help distinguish installations and diagnose repeated failures. We do not set a Firebase user ID or deliberately link these identifiers to your Finovo profile. Google processes this data for us under its own terms and privacy policy. Google states that Crashlytics retains crash stack traces and associated identifiers for 90 days before beginning deletion from live and backup systems.</p>
+            <h3 id="36-app-activity-and-diagnostics">3.6 App activity and diagnostics</h3>
+            <p>In production builds, Firebase Analytics receives limited app-interaction information such as screen names, feature events, selected currency, built-in category identifiers or random UUID-based identifiers for custom categories (never custom category names), wallet type, whether an attachment or recurring option was used, subscription status, and counts such as wallet or split-participant count. It also collects certain events automatically, such as app opens, first launches, app updates, sessions, and in-app purchases. Firebase may process an app-instance identifier, the Identifier for Vendors (IDFV), the IDFA when it is available after ATT authorization, IP-derived coarse location, and basic device, operating-system, app-version, and language information.</p>
+            <p>Firebase Crashlytics receives crash reports, stack traces, relevant app state, device and operating-system information, and developer-recorded non-fatal errors. When Analytics and Crashlytics are both enabled, recent analytics events may appear as breadcrumbs leading up to a crash. We deliberately do <strong>not</strong> attach your name, email address, transaction amounts, merchant/source names, receipt images or text, notes, wallet balances, or other user-entered financial content to analytics events or crash reports.</p>
 
             <hr>
 
@@ -115,12 +115,14 @@
             <ul>
                 <li>It does not sell your personal information for money.</li>
                 <li>It does not upload your receipts, transactions, balances, or attachments to a ZXApps server — there is no such server.</li>
+                <li>It does not send your transaction amounts, merchant/source names, receipt contents, notes, balances, or attachments to Firebase Analytics, Firebase Crashlytics, AdMob, or advertisers.</li>
+                <li>It does not use a social-media SDK or a separate third-party attribution SDK.</li>
                 <li>It does not use your financial data to target ads. Advertising data and your financial records are kept entirely separate.</li>
                 <li>It does not read your messages, browsing history, health data, or data from other apps.</li>
                 <li>It does not require you to create an account or share a password.</li>
                 <li>It does not perform background location tracking.</li>
             </ul>
-            <p>Limited analytics, diagnostics, advertising, and Apple-service data may leave the device as described in <a href="#7-network-behavior-of-the-app">§7</a> and <a href="#8-advertising-and-third-party-advertising-services">§8</a>. Your financial records and attachments do not.</p>
+            <p>The limited data that leaves the device for advertising, analytics, and crash diagnostics is explained in <a href="#8-google-services-admob-firebase-analytics-and-crashlytics">§8</a>.</p>
 
             <hr>
 
@@ -135,15 +137,15 @@
                     <tr><td>Photos</td><td>Attaching an existing image or PDF to a receipt.</td><td>Only when you pick a photo or file to attach.</td></tr>
                     <tr><td>Location — When In Use</td><td>Adding a place name to an expense.</td><td>Only when you tap to add a location to an expense.</td></tr>
                     <tr><td>Notifications</td><td>Sending the expense reminders and budget alerts you opt into.</td><td>When you turn on reminders or alerts inside the app.</td></tr>
-                    <tr><td>Tracking (App Tracking Transparency)</td><td>Allowing participating advertising services to access the device advertising identifier (IDFA) or link Finovo activity with information from other companies' apps or websites for personalized advertising and measurement.</td><td>Finovo requests authorization before allowing any tracking covered by Apple's ATT rules. iOS may not display the prompt when tracking is unavailable, restricted, previously decided, or not applicable.</td></tr>
+                    <tr><td>App Tracking Transparency</td><td>Allowing AdMob and participating advertising partners to access the device advertising identifier and use app-related data for personalized advertising and ad measurement across other companies' apps or websites.</td><td>Before the first ad load when tracking authorization has not already been decided.</td></tr>
                 </tbody>
             </table>
-            <p>Saying "no" to any prompt leaves the rest of the app available. Finovo checks ATT authorization before starting advertising services that could use tracking data. If you deny ATT permission, Finovo does not authorize those services to access the IDFA or track you across other companies' apps or websites through ATT-covered methods. Ads may still be shown using contextual, coarse, first-party, or other permitted non-tracking signals. ATT permission is separate from any regional consent choices presented by an advertising consent form.</p>
+            <p>Saying "no" to any prompt simply disables the feature that needed it. The rest of the app continues to work. If you deny App Tracking Transparency, Finovo can still show contextual or limited ads, but the IDFA is unavailable to the ad request. ATT controls cross-app tracking; it does not turn off Finovo's Firebase Analytics or Crashlytics processing described in <a href="#82-firebase-analytics-and-crashlytics">§8.2</a>.</p>
 
             <hr>
 
             <h2 id="6-where-your-data-physically-lives">6. Where your data physically lives</h2>
-            <p>Your financial content remains on-device or in your private iCloud. The table below identifies those storage locations:</p>
+            <p>Because your financial records and user-entered content remain on-device unless you enable private iCloud sync, it helps to know which location holds what:</p>
             <table>
                 <thead>
                     <tr><th>Bucket</th><th>What's inside</th><th>When it goes away</th></tr>
@@ -162,33 +164,44 @@
             <h2 id="7-network-behavior-of-the-app">7. Network behavior of the app</h2>
             <p>Finovo does not contact a ZXApps-owned server — there isn't one. Outbound network activity during use comes from these sources:</p>
             <ul>
-                <li><strong>Google AdMob and participating third-party advertising services</strong> request, select, deliver, measure, and protect ads on the free tier. AdMob may mediate ads from other networks, bidders, vendors, and ad sources. This is described in <a href="#8-advertising-and-third-party-advertising-services">§8</a>.</li>
-                <li><strong>Google Firebase Analytics and Crashlytics</strong> receive app-interaction events, installation identifiers, and crash/diagnostic data as described in <a href="#36-analytics-and-diagnostic-data">§3.6</a>.</li>
+                <li><strong>Google AdMob</strong> requests ads from Google's ad servers. This is described in <a href="#81-advertising-and-google-admob">§8.1</a>.</li>
+                <li><strong>Firebase Analytics and Firebase Crashlytics</strong> send limited app-activity, device, and diagnostic information to Google in production builds. This is described in <a href="#82-firebase-analytics-and-crashlytics">§8.2</a>.</li>
                 <li><strong>StoreKit</strong> contacts Apple's App Store servers when you view subscription options, purchase, restore, or when your entitlement is refreshed. Operated by Apple, not by us.</li>
                 <li><strong>iCloud / CloudKit</strong> synchronizes your data with your private iCloud account, if you enable sync. Operated by Apple.</li>
                 <li><strong>MapKit / Apple's reverse-geocoder</strong> may turn a coordinate into a readable place name when you add a location to an expense. This call goes to Apple, not to us.</li>
             </ul>
-            <p>Apart from the services identified here, the app does not send telemetry, attribution callbacks, or webhooks to third parties. None of these network services receives your transaction amounts, merchant names, notes, receipt images, balances, or other financial records from Finovo.</p>
+            <p>Finovo does not send your financial records to Google or any ZXApps server. Network activity for advertising, analytics, and diagnostics is limited to the purposes and data described below.</p>
 
             <hr>
 
-            <h2 id="8-advertising-and-third-party-advertising-services">8. Advertising and third-party advertising services</h2>
-            <p>The free tier of Finovo is supported by ads delivered through <strong>Google AdMob</strong> and participating third-party advertising services. Depending on availability, region, consent, and campaign, these may include ad networks, mediation partners, bidders, demand partners, advertisers, measurement providers, fraud-prevention providers, and vendors that supply or verify an ad. AdMob may choose among these sources through bidding or mediation, so Google is not necessarily the only company involved in an ad request.</p>
+            <h2 id="8-google-services-admob-firebase-analytics-and-crashlytics">8. Google services: AdMob, Firebase Analytics, and Crashlytics</h2>
+            <h3 id="81-advertising-and-google-admob">8.1 Advertising and Google AdMob</h3>
+            <p>Finovo displays ads served through <strong>Google AdMob</strong> (operated by Google):</p>
             <ul>
-                <li><strong>Purposes.</strong> Advertising services may request, select, deliver, personalize, frequency-cap, measure, attribute, secure, and report on ads; prevent invalid traffic and fraud; and comply with legal obligations.</li>
-                <li><strong>Data these services may process.</strong> Depending on your choices and the provider, this can include IP address; coarse location inferred from IP; device model, language, operating system, app version, and connection information; advertising identifiers such as IDFA when permitted; app-instance, publisher, or vendor identifiers; consent and privacy signals; ad-view, click, conversion, and interaction data; and diagnostic or fraud-prevention signals. An ad provider may combine permitted data with information it already holds under its own privacy policy.</li>
-                <li><strong>Personalized and non-personalized ads.</strong> Where permitted and with any legally required consent, advertising partners may use identifiers and activity information to personalize ads or measure them across apps or websites. Otherwise, Finovo may request non-personalized, contextual, or restricted-data-processing ads. Non-personalized ads still require limited data processing for delivery, frequency capping, measurement, security, and fraud prevention.</li>
-                <li><strong>ATT.</strong> Finovo uses Apple's ATT framework and requests authorization before enabling access to IDFA or ATT-covered cross-app/cross-site tracking. Unless the ATT status is <strong>Authorized</strong>, Finovo does not authorize advertising services to use the IDFA or engage in ATT-covered tracking. Denying ATT does not remove ads and does not prevent processing that Apple does not define as tracking. You can change ATT permission later in <strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking</strong>. iOS may not display the prompt if you previously made a choice, tracking requests are restricted at the device or account level, or the request is otherwise unavailable.</li>
-                <li><strong>Regional consent.</strong> Where required, an advertising consent form may let you consent, reject, or manage purposes and partners. That consent is separate from ATT: both the applicable regional consent and ATT authorization must permit a tracking use before Finovo allows that use. Available partners can change over time; the current partners and their purposes are shown in the consent form or its privacy-options screen when applicable.</li>
-                <li><strong>Your financial data is never used for ads.</strong> Finovo does not send advertisers or ad partners your transaction amounts, merchant names, receipt content or images, notes, budgets, wallet balances, split participants, Sign in with Apple details, or precise location entered in the app.</li>
-                <li><strong>Provider policies.</strong> Google's handling of data is described in its <a href="https://policies.google.com/privacy">Privacy Policy</a>, <a href="https://policies.google.com/technologies/partner-sites">data-use information for partner apps</a>, and <a href="https://support.google.com/admob/answer/6128543">AdMob privacy information</a>. Other participating providers process data under the notices presented in the applicable consent or privacy-options interface.</li>
-                <li><strong>Removing ads.</strong> Purchasing a subscription removes third-party ads and stops new ad requests from Finovo while the subscription is active. Previously collected data remains subject to each provider's retention and deletion rules.</li>
+                <li><strong>Content controls.</strong> We configure AdMob to <strong>exclude adult (18+), gambling, and sexually explicit ad content</strong> to suit a personal-finance audience. We do not control, and cannot guarantee, the specific ads delivered.</li>
+                <li><strong>Tracking permission.</strong> Finovo may request Apple's App Tracking Transparency permission before loading an ad. If you allow it, AdMob and participating advertising partners may access the IDFA and link app-related data with data from other companies' apps or websites for personalized advertising or measurement. If you deny it, the IDFA is unavailable and Finovo remains fully usable with contextual or limited ads.</li>
+                <li><strong>Attribution without IDFA.</strong> Google and participating ad networks may use Apple's privacy-preserving SKAdNetwork APIs to measure installs or conversions even when IDFA access is unavailable.</li>
+                <li><strong>Data Google may process.</strong> Even for non-personalized ads, to serve, cap, and measure ads, improve SDK performance, and detect fraud, Google may process IP address and coarse (IP-derived) location; device identifiers; ads viewed or clicked; other ad/product interactions; device and operating-system information; performance data; and non-user-related crash logs. Google acts as an independent party for this processing under its own policies.</li>
+                <li><strong>Your financial data is never used for ads.</strong> Advertising runs separately from your records; the app does not share your transactions, receipts, or balances with advertisers.</li>
+                <li><strong>Google's policies.</strong> Google's handling of this data is described at <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> and <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>. AdMob specifics are at <a href="https://support.google.com/admob/answer/6128543">support.google.com/admob/answer/6128543</a>.</li>
+            </ul>
+
+            <h3 id="82-firebase-analytics-and-crashlytics">8.2 Firebase Analytics and Crashlytics</h3>
+            <p>Production builds use <strong>Firebase Analytics</strong> and <strong>Firebase Crashlytics</strong>, both operated by Google:</p>
+            <ul>
+                <li><strong>Analytics.</strong> We use product-interaction events and screen views to understand which features are used and improve the app. These events may include the non-content attributes listed in <a href="#36-app-activity-and-diagnostics">§3.6</a>.</li>
+                <li><strong>Diagnostics.</strong> Crashlytics collects crash reports, stack traces, relevant application state, device/OS details, and developer-recorded non-fatal errors so we can investigate failures. Analytics events may be attached as pre-crash breadcrumbs.</li>
+                <li><strong>Identifiers and technical data.</strong> Depending on Google's SDK behavior and device settings, Firebase may process an app-instance identifier, IDFV, or the IDFA when available after ATT authorization, along with IP-derived coarse location and basic app/device metadata. We do not set a Firebase user ID or send your Apple sign-in identity to Firebase.</li>
+                <li><strong>Advertising features.</strong> Firebase Analytics data may support advertising measurement or personalization if those features are enabled in the connected Google property and the required permission or consent has been obtained. ATT denial prevents IDFA access but does not disable core app-usage measurement through app-instance or vendor identifiers.</li>
+                <li><strong>Separation from financial content.</strong> We do not send amounts, merchant or income-source names, receipt images or recognized text, notes, balances, email addresses, or other user-entered financial content as Firebase event parameters or crash-report custom fields.</li>
+                <li><strong>Availability and retention.</strong> Firebase processing is enabled automatically in production builds and is not controlled by the ATT choice. Google retains this data according to our Firebase project settings and Google's applicable retention rules.</li>
+                <li><strong>Google's policies.</strong> See <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>, <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a>, and <a href="https://firebase.google.com/support/privacy">Firebase privacy and security</a>.</li>
             </ul>
 
             <hr>
 
             <h2 id="9-subscriptions">9. Subscriptions</h2>
-            <p>Finovo is free to install and use on an ad-supported basis. Advanced features and an ad-free experience are unlocked through an optional auto-renewing subscription, sold by Apple via the App Store using Apple's <strong>StoreKit</strong> framework.</p>
+            <p>Finovo is free to install and use on an ad-supported basis. Advanced features are unlocked through an optional auto-renewing subscription, sold by Apple via the App Store using Apple's <strong>StoreKit</strong> framework.</p>
             <p>What this means in practice:</p>
             <ul>
                 <li>Apple — not us — sees your payment method, billing address, and Apple ID.</li>
@@ -219,7 +232,7 @@
                 <li><strong>StoreKit</strong> — subscriptions.</li>
                 <li><strong>UserNotifications</strong> — scheduling local reminders.</li>
             </ul>
-            <p>Third-party SDKs and services include <strong>Google Firebase Analytics</strong>, <strong>Firebase Crashlytics</strong>, <strong>Google Mobile Ads (AdMob)</strong>, and advertising partners reached through AdMob mediation, bidding, or ad delivery. They are covered in <a href="#36-analytics-and-diagnostic-data">§3.6</a>, <a href="#7-network-behavior-of-the-app">§7</a>, and <a href="#8-advertising-and-third-party-advertising-services">§8</a>.</p>
+            <p>The third-party SDKs in the app are <strong>Google Mobile Ads (AdMob)</strong>, <strong>Firebase Analytics</strong>, and <strong>Firebase Crashlytics</strong>, covered in <a href="#8-google-services-admob-firebase-analytics-and-crashlytics">§8</a>.</p>
 
             <hr>
 
@@ -245,8 +258,7 @@
             <p>You don't need to file a written request to control what Finovo can see. iOS gives you the tools:</p>
             <ul>
                 <li><strong>Settings &rarr; Privacy &amp; Security &rarr; Camera / Photos / Location</strong> — grant, narrow, or revoke each permission independently.</li>
-                <li><strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking</strong> — review or revoke Finovo's ATT permission.</li>
-                <li><strong>Finovo's advertising privacy options, when available in your region</strong> — review or change consent choices for advertising purposes and partners. Revoking a choice affects future processing but does not automatically erase data a provider previously collected.</li>
+                <li><strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking</strong> — review or revoke Finovo's cross-app tracking permission. Revoking it prevents future IDFA access; it does not disable Firebase Analytics or Crashlytics.</li>
                 <li><strong>Settings &rarr; Notifications &rarr; Finovo</strong> — mute reminders and alerts.</li>
                 <li><strong>Settings &rarr; [Your Name] &rarr; Subscriptions</strong> — cancel a subscription.</li>
                 <li><strong>Settings &rarr; [Your Name] &rarr; iCloud</strong> — remove Finovo's synced data from your iCloud.</li>
@@ -258,15 +270,15 @@
 
             <h2 id="15-notice-for-users-in-the-eu-the-eea-the-uk-and-switzerland">15. Notice for users in the EU, the EEA, the UK, and Switzerland</h2>
             <p>This section provides additional information required by the EU General Data Protection Regulation (GDPR), the UK GDPR, and the Swiss FADP.</p>
-            <p><strong>Controller.</strong> ZXApps, the publisher of Finovo, acts as controller for the limited processing it determines. Google processes Firebase data as our service provider under applicable terms. Google and participating advertising providers may act as processors, independent controllers, or joint controllers for the advertising activities described in <a href="#8-advertising-and-third-party-advertising-services">§8</a>, depending on the service and applicable law.</p>
+            <p><strong>Controller.</strong> ZXApps, the publisher of Finovo, acts as the controller of the limited personal data processed in connection with the app. <strong>Google</strong> processes advertising, analytics, and diagnostic data described in <a href="#8-google-services-admob-firebase-analytics-and-crashlytics">§8</a> under the applicable Google terms and policies.</p>
             <p><strong>Legal bases.</strong></p>
             <ul>
                 <li><strong>Article 6(1)(b)</strong> — performance of a contract — when you ask the app to do something for you (record a transaction, scan a receipt, sync your data, process a subscription).</li>
-                <li><strong>Article 6(1)(a)</strong> — consent — for permissions you grant through iOS and for advertising storage, access, personalization, or measurement where consent is required. ATT authorization is an Apple platform permission and does not replace consent required by privacy law. You can withdraw consent at any time.</li>
-                <li><strong>Article 6(1)(f)</strong> — legitimate interests — where permitted, for keeping the app secure, remembering preferences, aggregated app analytics, crash diagnosis, fraud prevention, and funding the free tier with non-personalized advertising. We or a provider will rely on legitimate interests only after considering the impact on your rights and where the law permits it.</li>
+                <li><strong>Article 6(1)(a)</strong> — consent — for permissions you grant through iOS (Camera, Photos, Location, Notifications) and for advertising where applicable law requires consent. Apple's ATT authorization separately controls cross-app tracking and IDFA access. You can withdraw consent or revoke a permission at any time.</li>
+                <li><strong>Article 6(1)(f)</strong> — legitimate interests — for keeping the app secure, remembering your preferences, understanding aggregate feature use, diagnosing crashes, and supporting the app through advertising, except where applicable law requires consent.</li>
             </ul>
             <p><strong>Your rights.</strong> Subject to GDPR conditions, you have the rights of access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction (Art. 18), portability (Art. 20), objection (Art. 21), not being subject to solely automated decision-making (Art. 22), which the app does not perform, and withdrawal of consent (Art. 7(3)).</p>
-            <p>Because Finovo keeps your records on your own device and iCloud, the fastest ways to control those records are to edit or delete them inside the app, revoke an iOS permission, turn off iCloud sync, or delete the app. Advertising consent and partner controls are available through the applicable privacy-options interface. For a written response about a specific GDPR right, write to the address in <a href="#20-how-to-reach-us">§20</a> and we will respond within one month (extendable by two months for complex matters, with notice to you). Requests concerning data controlled independently by an advertising provider may need to be directed to that provider.</p>
+            <p>Because Finovo keeps your records on your own device and iCloud, the fastest ways to exercise these rights are also the most direct: edit or delete records inside the app, revoke an iOS permission, turn off iCloud sync, or delete the app. For a written response about a specific GDPR right, write to the address in <a href="#20-how-to-reach-us">§20</a> and we will respond within one month (extendable by two months for complex matters, with notice to you).</p>
             <p><strong>Complaints.</strong> You may lodge a complaint with your local supervisory authority:</p>
             <ul>
                 <li>European Data Protection Board: <a href="https://edpb.europa.eu/">edpb.europa.eu</a></li>
@@ -278,9 +290,9 @@
 
             <h2 id="16-notice-for-users-in-california">16. Notice for users in California</h2>
             <p>This section addresses disclosures expected under the California Consumer Privacy Act, as amended by the California Privacy Rights Act (the <strong>CCPA</strong>).</p>
-            <p><strong>Categories collected.</strong> Finovo stores the financial records and account information you provide on your device. Firebase processes identifiers, product-interaction data, crash data, and other diagnostic data. Advertising services may process identifiers, internet or other electronic-network activity, approximate geolocation, device information, ad interactions, inferences, and consent/privacy signals as described in <a href="#8-advertising-and-third-party-advertising-services">§8</a>. Finovo does not disclose your financial records to these services.</p>
-            <p><strong>"Sale" and "sharing."</strong> We do <strong>not</strong> sell your personal information for money and do not disclose the financial records you enter. Some disclosure of identifiers or app/ad activity to advertising partners for personalized or cross-context behavioral advertising may be considered a "sale" or "sharing" under California law even when no money changes hands. Where applicable, you can opt out through Finovo's advertising privacy options and by denying or revoking ATT permission. Subscribing removes ads and stops future ad requests while active.</p>
-            <p><strong>Your CCPA rights.</strong> Subject to applicable exceptions, you have the right to know, delete, correct, and opt out of sale/sharing, and the right to be free from discrimination for exercising these rights. You may also have the right to limit certain uses of sensitive personal information; Finovo does not use the financial content you enter to infer characteristics or target ads. To submit a request, use the privacy controls described above or email the address in <a href="#20-how-to-reach-us">§20</a>. We will respond within the timeframes California law sets. Authorized agents may submit a request with proof of authorization.</p>
+            <p><strong>Categories collected.</strong> Finovo stores the financial records and account information you provide on your device. Google may process identifiers, internet or other electronic network activity, coarse location, product-interaction information, crash data, and other diagnostic data for advertising, analytics, and app functionality as described in <a href="#8-google-services-admob-firebase-analytics-and-crashlytics">§8</a>.</p>
+            <p><strong>"Sale" and "sharing."</strong> We do <strong>not</strong> sell your personal information for money and do not disclose the financial records you enter to advertisers. If you authorize tracking, AdMob and participating advertising partners may use identifiers or app-related activity for cross-context behavioral advertising; California law may define that disclosure as "sharing." You can opt out by denying or revoking ATT permission. Firebase Analytics and Crashlytics are used for analytics and app functionality; Analytics may also support advertising measurement or personalization as described in <a href="#82-firebase-analytics-and-crashlytics">§8.2</a>, but we do not use your financial records for ad targeting.</p>
+            <p><strong>Your CCPA rights.</strong> You have the right to know, to delete, to correct, to opt out of sale/sharing, to limit the use of sensitive personal information, and to be free from retaliation for exercising these rights. To submit a request, email the address in <a href="#20-how-to-reach-us">§20</a>; we will respond within the timeframes California law sets. Authorized agents may submit a request with proof of authorization.</p>
 
             <hr>
 
@@ -291,12 +303,12 @@
 
             <h2 id="18-cross-border-transfers">18. Cross-border transfers</h2>
             <p>No international transfer of your financial records occurs through normal use of Finovo, because those records stay on your device and your private iCloud.</p>
-            <p>Firebase and advertising data (see <a href="#36-analytics-and-diagnostic-data">§3.6</a> and <a href="#8-advertising-and-third-party-advertising-services">§8</a>) may be processed in countries other than yours. Google and other providers state that they use transfer mechanisms and safeguards required by applicable law; consult the notice for the relevant provider for details. If you email us, the content of that email passes through and is retained by the email service we use to read and reply to it.</p>
+            <p>Advertising, analytics, and diagnostic data processed by Google (see <a href="#8-google-services-admob-firebase-analytics-and-crashlytics">§8</a>) may be processed in countries other than yours; Google applies safeguards (such as standard contractual clauses) as required by law. If you email us, the content of that email passes through and is retained by the email service we use to read and reply to it.</p>
 
             <hr>
 
             <h2 id="19-updates-to-this-document">19. Updates to this document</h2>
-            <p>If we change this Privacy Policy, the <strong>"In effect from"</strong> date at the top will move. For material changes — for example, adding a new third-party SDK, or any change that alters the on-device-first nature of the app — we will additionally display a notice inside the app the next time you open it. Continued use of Finovo after a revised date is taken as acceptance of the revised text, except where local law requires explicit consent.</p>
+            <p>If we change this Privacy Policy, the <strong>"In effect from"</strong> date at the top will move. For material changes, we may also provide an in-app notice or request consent where applicable law requires it. Continued use of Finovo after a revised date is taken as acceptance of the revised text, except where local law requires explicit consent.</p>
 
             <hr>
 
