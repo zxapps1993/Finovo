@@ -19,7 +19,7 @@
     <main>
         <div class="card">
             <h1>Finovo Privacy Policy</h1>
-            <p class="subtitle"><strong>In effect from:</strong> July 13, 2026</p>
+            <p class="subtitle"><strong>In effect from:</strong> September 26, 2026</p>
 
             <p>Finovo is an iPhone and iPad app published by <strong>ZXApps</strong> (operated by the developer Ghayor Abbas, reachable at the contact address listed in <a href="#20-how-to-reach-us">§20</a>). It helps you track expenses and income, scan and organize receipts, manage wallets and budgets, follow recurring bills, and split costs with other people. This document explains, in plain language, what the app does with information on your device — and what it deliberately avoids doing.</p>
 
@@ -39,7 +39,7 @@
                     <li><a href="#5-every-permission-the-app-may-ask-for">Every permission the app may ask for</a></li>
                     <li><a href="#6-where-your-data-physically-lives">Where your data physically lives</a></li>
                     <li><a href="#7-network-behavior-of-the-app">Network behavior of the app</a></li>
-                    <li><a href="#8-google-services-admob-firebase-analytics-and-crashlytics">Google services: AdMob, Firebase Analytics, and Crashlytics</a></li>
+                    <li><a href="#8-google-services-admob-firebase-analytics-and-crashlytics">Google services: AdMob, Firebase Analytics, and Crashlytics</a> (including <a href="#83-your-consent-choices">your consent choices</a>)</li>
                     <li><a href="#9-subscriptions">Subscriptions</a></li>
                     <li><a href="#10-notifications-and-reminders">Notifications and reminders</a></li>
                     <li><a href="#11-apple-frameworks-the-app-relies-on">Apple frameworks the app relies on</a></li>
@@ -64,11 +64,11 @@
                 <li>The app never uploads your receipts, transactions, or attachments to us. Receipt text recognition runs <strong>on your device</strong>.</li>
                 <li><strong>iCloud sync is optional and off by default.</strong> If you turn it on, your data syncs only through <strong>your own private iCloud account</strong>; we never receive a copy.</li>
                 <li>Production builds use <strong>Firebase Analytics and Firebase Crashlytics</strong> (Google services) to understand feature use, diagnose crashes, and improve reliability. We do not send amounts, merchant names, receipt contents, notes, balances, email addresses, or other user-entered financial content to these services.</li>
-                <li>Finovo shows ads through <strong>Google AdMob</strong>. The app may ask for App Tracking Transparency permission before loading an ad; denying it does not block the app or prevent contextual/limited ads.</li>
+                <li>Finovo shows ads through <strong>Google AdMob</strong> on the free plan. The app may ask for App Tracking Transparency permission before loading an ad; denying it does not block the app or prevent contextual/limited ads. In the EEA, the UK, and Switzerland, ads are personalized only with your consent (see <a href="#83-your-consent-choices">§8.3</a>). Finovo Pro subscribers see no ads.</li>
                 <li>We do <strong>not</strong> sell your personal information for money.</li>
                 <li>You can use the app as a <strong>Guest</strong> with no account, or with <strong>Sign in with Apple</strong>. We never ask for a password.</li>
-                <li>Permissions (Camera, Photos, Location, Notifications) are optional and independent. Denying one only disables that one feature.</li>
-                <li>Deleting the app from your device deletes the local data the app stored on that device.</li>
+                <li>Permissions (Camera, Location, Notifications, Tracking) are optional and independent. Denying one only disables that one feature. Photos, Files, and Contacts are opened through Apple's system pickers, which give Finovo only the items you choose.</li>
+                <li><strong>Settings &rarr; Delete account</strong> inside the app erases your Finovo data on the device and Finovo's backup in your iCloud. Deleting the app deletes the local data the app stored on that device.</li>
             </ol>
             <p>The remainder of this document expands on each of these claims so you can verify them.</p>
 
@@ -90,10 +90,13 @@
             <p>The sections below list, by category, the information Finovo touches while it runs. Your financial records and user-entered content are processed and stored only on your device (and in your private iCloud if you enable sync). Limited advertising, app-activity, and diagnostic data is processed by Google as described in <a href="#8-google-services-admob-firebase-analytics-and-crashlytics">§8</a>.</p>
 
             <h3>3.1 Account information</h3>
-            <p>If you choose <strong>Sign in with Apple</strong>, the app stores an Apple-provided user identifier and — only if you choose to share them on first sign-in — your name and email address (which may be Apple's private relay address). If you continue as a <strong>Guest</strong>, none of this is collected. This information stays on your device (and your private iCloud if sync is on). We never receive it on a server we control.</p>
+            <p>If you choose <strong>Sign in with Apple</strong>, the app stores an Apple-provided user identifier and — only if you choose to share them with Apple's sign-in — your name and email address (which may be Apple's private relay address). Apple shares your name only on the first sign-in; the email address is read from Apple's sign-in response on the device. If you continue as a <strong>Guest</strong>, none of this is collected. This information stays on your device (and your private iCloud if sync is on). We never receive it on a server we control.</p>
+            <p>So that signing back in shows your own name again, the name and email for each Apple account used on the device are kept on that device after you sign out. They are removed when you use <strong>Settings &rarr; Delete account</strong> or delete the app.</p>
+            <p>If you start as a Guest and later sign in with Apple from <strong>Settings</strong>, the records you logged as a Guest stay on the device and become part of that Apple account. If an iCloud backup already exists for your iCloud account, the app asks whether to restore it or keep this device's data; nothing is replaced without your choice.</p>
 
             <h3>3.2 The financial records you enter</h3>
-            <p>Finovo stores what you record, which may include: expenses and receipts, income, merchant and source names, amounts and currencies, dates, categories, notes, payment-method labels, wallets and account balances, budgets, recurring bills and subscriptions, and bill-split details — including names of people you add to a split.</p>
+            <p>Finovo stores what you record, which may include: expenses and receipts, income, merchant and source names, amounts and currencies, dates, categories, notes, payment-method labels, wallets and account balances, transfers between your accounts, budgets, recurring bills and subscriptions (including whether one is paused), and bill-split details — including names of people you add to a split, and group or trip names, types, and dates.</p>
+            <p><strong>People you split with.</strong> You can type a person's name or pick someone with Apple's system contact picker. The picker runs outside Finovo and hands the app only the contacts you select — Finovo never gets access to your address book and never asks for the Contacts permission. For a picked contact, the app keeps the name and one phone number with that split, on your device (and your private iCloud if sync is on). It never contacts these people or uploads their details. Removing someone from "Recent" hides them from suggestions without changing past splits.</p>
 
             <h3>3.3 Receipt images and documents</h3>
             <p>When you scan a receipt or attach an image or PDF, the file is stored with its record on your device (and your private iCloud if sync is on). Text recognition (OCR) runs <strong>on your device</strong> using Apple's Vision framework to suggest the amount, date, and merchant. <strong>Receipt images are never uploaded to us or to any third party for processing.</strong></p>
@@ -102,7 +105,7 @@
             <p>If you choose to add a place to an expense, the app uses your device location <strong>once, at that moment</strong>, and turns it into a readable place name. Location is used only when you request it, never in the background, and only the resulting place text is stored with that record. The app does not build a location history or derive your home or work address.</p>
 
             <h3>3.5 App-internal state</h3>
-            <p>Finovo keeps a small amount of bookkeeping on the device: whether onboarding/setup is complete, your selected currency, notification preferences, your iCloud-sync choice, and a cached copy of your subscription status reported by StoreKit. Your profile name/email (from Sign in with Apple) and currency may sync through your private iCloud so your devices stay consistent.</p>
+            <p>Finovo keeps a small amount of bookkeeping on the device: whether onboarding/setup is complete, your selected currency, notification and per-item reminder preferences, which guided tours you have seen, your default account, recent searches, your iCloud-sync choice, and a cached copy of your subscription status reported by StoreKit. Your profile name/email (from Sign in with Apple) and currency may sync through your private iCloud so your devices stay consistent.</p>
 
             <h3 id="36-app-activity-and-diagnostics">3.6 App activity and diagnostics</h3>
             <p>In production builds, Firebase Analytics receives limited app-interaction information such as screen names, feature events, selected currency, built-in category identifiers or random UUID-based identifiers for custom categories (never custom category names), wallet type, whether an attachment or recurring option was used, subscription status, and counts such as wallet or split-participant count. It also collects certain events automatically, such as app opens, first launches, app updates, sessions, and in-app purchases. Firebase may process an app-instance identifier, the Identifier for Vendors (IDFV), the IDFA when it is available after ATT authorization, IP-derived coarse location, and basic device, operating-system, app-version, and language information.</p>
@@ -134,13 +137,13 @@
                 </thead>
                 <tbody>
                     <tr><td>Camera</td><td>Scanning a receipt to pre-fill an expense.</td><td>The first time you start a receipt scan.</td></tr>
-                    <tr><td>Photos</td><td>Attaching an existing image or PDF to a receipt.</td><td>Only when you pick a photo or file to attach.</td></tr>
                     <tr><td>Location — When In Use</td><td>Adding a place name to an expense.</td><td>Only when you tap to add a location to an expense.</td></tr>
-                    <tr><td>Notifications</td><td>Sending the expense reminders and budget alerts you opt into.</td><td>When you turn on reminders or alerts inside the app.</td></tr>
-                    <tr><td>App Tracking Transparency</td><td>Allowing AdMob and participating advertising partners to access the device advertising identifier and use app-related data for personalized advertising and ad measurement across other companies' apps or websites.</td><td>Before the first ad load when tracking authorization has not already been decided.</td></tr>
+                    <tr><td>Notifications</td><td>Sending the reminders and alerts you opt into (see <a href="#10-notifications-and-reminders">§10</a>).</td><td>When you turn on notifications or a reminder inside the app.</td></tr>
+                    <tr><td>App Tracking Transparency</td><td>Allowing AdMob and participating advertising partners to access the device advertising identifier and use app-related data for personalized advertising and ad measurement across other companies' apps or websites.</td><td>Before the first ad load on the free plan, when tracking authorization has not already been decided.</td></tr>
                 </tbody>
             </table>
-            <p>Saying "no" to any prompt simply disables the feature that needed it. The rest of the app continues to work. If you deny App Tracking Transparency, Finovo can still show contextual or limited ads, but the IDFA is unavailable to the ad request. ATT controls cross-app tracking; it does not turn off Finovo's Firebase Analytics or Crashlytics processing described in <a href="#82-firebase-analytics-and-crashlytics">§8.2</a>.</p>
+            <p><strong>No permission needed.</strong> Attaching a photo or file uses Apple's system photo picker and Files browser, and adding people to a split can use Apple's system contact picker. These run outside Finovo and give the app only the items you choose, so there is no Photos or Contacts permission prompt and Finovo cannot browse your library or address book.</p>
+            <p>Saying "no" to any prompt simply disables the feature that needed it. The rest of the app continues to work. If you deny App Tracking Transparency, Finovo can still show contextual or limited ads, but the IDFA is unavailable to the ad request. ATT controls cross-app tracking; it does not turn off Finovo's Firebase Analytics or Crashlytics processing described in <a href="#82-firebase-analytics-and-crashlytics">§8.2</a>. Advertising consent in the EEA, the UK, and Switzerland is covered in <a href="#83-your-consent-choices">§8.3</a>.</p>
 
             <hr>
 
@@ -151,10 +154,10 @@
                     <tr><th>Bucket</th><th>What's inside</th><th>When it goes away</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Standard UserDefaults</td><td>App preferences, setup/onboarding flags, selected currency, notification settings, iCloud-sync choice, cached subscription state, and your Apple sign-in identifier/name/email.</td><td>When you uninstall the app or sign out (session identity is cleared on sign-out).</td></tr>
+                    <tr><td>Standard UserDefaults</td><td>App preferences, setup/onboarding flags, selected currency, notification and reminder settings, iCloud-sync choice, cached subscription state, and your Apple sign-in identifier/name/email.</td><td>The signed-in session is cleared on sign-out; the name/email remembered for each Apple account are removed by <strong>Settings &rarr; Delete account</strong> or when you uninstall the app.</td></tr>
                     <tr><td>Local SwiftData store</td><td>Your expenses, income, receipts, wallets, budgets, splits, categories, and recurring items.</td><td>When you delete the records, or when you uninstall the app.</td></tr>
                     <tr><td>External file storage</td><td>Receipt images and attached documents.</td><td>When you delete the attachment or uninstall the app.</td></tr>
-                    <tr><td>Your private iCloud (optional)</td><td>A synced copy of the above, plus your profile name/email and currency, if you turn on iCloud sync.</td><td>When you turn off sync and remove Finovo's data via iOS Settings &rarr; [your name] &rarr; iCloud.</td></tr>
+                    <tr><td>Your private iCloud (optional)</td><td>A synced copy of the above, plus your profile name/email and currency, if you turn on iCloud sync.</td><td>When you use <strong>Settings &rarr; Delete iCloud backup</strong> or <strong>Delete account</strong> in the app, or remove Finovo's data via iOS Settings &rarr; [your name] &rarr; iCloud.</td></tr>
                 </tbody>
             </table>
             <p>Nothing in this table is uploaded to ZXApps. On-device storage relies on the same hardware-backed device encryption iOS provides whenever your device is locked.</p>
@@ -198,6 +201,17 @@
                 <li><strong>Google's policies.</strong> See <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>, <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a>, and <a href="https://firebase.google.com/support/privacy">Firebase privacy and security</a>.</li>
             </ul>
 
+            <h3 id="83-your-consent-choices">8.3 Your consent choices</h3>
+            <p>Two separate choices decide how ads can use data about you. Neither affects your financial records, which are never used for ads.</p>
+            <ul>
+                <li><strong>App Tracking Transparency (every region).</strong> Apple's tracking prompt asks whether Finovo may let AdMob and its partners use the advertising identifier (IDFA) and track you across other companies' apps and websites. If you choose <em>Ask App Not to Track</em>, the IDFA is not available and ads are not personalized from cross-app tracking. You can change this at any time in <strong>Settings &rarr; Privacy &amp; Security &rarr; Tracking</strong>.</li>
+                <li><strong>Advertising consent in the EEA, the UK, and Switzerland.</strong> Under the GDPR, the UK GDPR, the ePrivacy rules, and the Swiss FADP, ads may use your personal data for personalization, or store and read information on your device for advertising, only with your consent. Unless you have given that consent through a consent message in Finovo, Google serves only <em>limited</em> or non-personalized ads, which are not based on your past activity. Google may still process some data, such as your IP address, to deliver an ad, prevent fraud, and limit how often an ad is shown, as its policies allow. You can refuse or withdraw consent at any time; the app works the same either way.</li>
+                <li><strong>Analytics and crash reports.</strong> Firebase Analytics and Crashlytics help us keep the app working and are never used to personalize ads from your financial data. Analytics data is used for Google's advertising features only where those features are enabled in our Google property and any consent the law requires has been obtained. You can object to analytics processing by writing to us (see <a href="#20-how-to-reach-us">§20</a>).</li>
+                <li><strong>Remove ads entirely.</strong> A Finovo Pro subscription removes ads from the app while it is active.</li>
+                <li><strong>Children and teens.</strong> If you are under the age of digital consent in your country (13–16 depending on the country), please do not give advertising consent and ask a parent or guardian to review this policy.</li>
+            </ul>
+            <p>Whatever you choose, Finovo keeps working. Declining tracking or advertising consent never locks features or changes how your data is stored.</p>
+
             <hr>
 
             <h2 id="9-subscriptions">9. Subscriptions</h2>
@@ -206,7 +220,7 @@
             <ul>
                 <li>Apple — not us — sees your payment method, billing address, and Apple ID.</li>
                 <li>The only thing the app receives from StoreKit is a signed entitlement indicating whether your Apple ID currently has an active subscription. No payment identifiers travel with that signal.</li>
-                <li>Price, billing period, and any free trial are shown on the purchase screen before you buy.</li>
+                <li>Price and billing period are shown in Finovo before you buy, and Apple's purchase sheet confirms the price, period, and any introductory offer before you pay.</li>
                 <li>Auto-renewal, cancellation, refunds, and Family Sharing are governed by Apple's standard subscription policies. You can manage or cancel a subscription at any time in <strong>Settings &rarr; [Your Name] &rarr; Subscriptions</strong> on your device.</li>
             </ul>
             <p>Apple's processing of your purchase is described in Apple's privacy policy and the Apple Media Services Terms.</p>
@@ -214,7 +228,7 @@
             <hr>
 
             <h2 id="10-notifications-and-reminders">10. Notifications and reminders</h2>
-            <p>If you turn them on, Finovo schedules <strong>local notifications</strong> (expense reminders and budget alerts) through iOS. These are produced by your device and never go through a push server. The app does not register for remote push notifications and never transmits a push device token. Adjust these anytime in <strong>Settings &rarr; Notifications &rarr; Finovo</strong>.</p>
+            <p>If you turn them on, Finovo schedules <strong>local notifications</strong> through iOS: reminders to log your spending, heads-ups before a recurring charge or before expected pay lands, reminders to cancel a subscription you flagged, split settle-up nudges, and budget alerts (near your limit and over budget). They are created on your device from your own records, and their text never leaves the device. Finovo has no push server of its own and never sends a push device token to us. If iCloud sync is on, Apple's CloudKit may use Apple's own push service to tell the app that synced data changed; that is handled entirely by Apple. Adjust reminders inside the app under <strong>Settings &rarr; Reminders &amp; alerts</strong>, or turn them off in <strong>Settings &rarr; Notifications &rarr; Finovo</strong>.</p>
 
             <hr>
 
@@ -264,6 +278,14 @@
                 <li><strong>Settings &rarr; [Your Name] &rarr; iCloud</strong> — remove Finovo's synced data from your iCloud.</li>
                 <li><strong>Long-press the Finovo icon &rarr; Remove App &rarr; Delete App</strong> — remove the app and its local data from the device.</li>
             </ul>
+            <p>Inside Finovo, under <strong>Settings</strong>:</p>
+            <ul>
+                <li><strong>Export all data</strong> — save a copy of your records (Finovo Pro).</li>
+                <li><strong>Delete iCloud backup</strong> — remove Finovo's backup from your private iCloud.</li>
+                <li><strong>Sign out</strong> — end the session; your records stay on the device for when you sign back in with the same account. Signing in with a different account (or as a Guest) starts fresh on this device; any iCloud backup of the previous account is left untouched.</li>
+                <li><strong>Delete account</strong> — permanently erase your Finovo records on the device and Finovo's backup in your iCloud, cancel scheduled reminders, and forget the sign-in identity and the remembered name and email. This cannot be undone. It does not cancel an App Store subscription — do that in <strong>Settings &rarr; [Your Name] &rarr; Subscriptions</strong>.</li>
+                <li><strong>Reminders &amp; alerts</strong> — choose which reminders you get.</li>
+            </ul>
             <p>These controls are immediate and honored by iOS itself.</p>
 
             <hr>
@@ -274,11 +296,11 @@
             <p><strong>Legal bases.</strong></p>
             <ul>
                 <li><strong>Article 6(1)(b)</strong> — performance of a contract — when you ask the app to do something for you (record a transaction, scan a receipt, sync your data, process a subscription).</li>
-                <li><strong>Article 6(1)(a)</strong> — consent — for permissions you grant through iOS (Camera, Photos, Location, Notifications) and for advertising where applicable law requires consent. Apple's ATT authorization separately controls cross-app tracking and IDFA access. You can withdraw consent or revoke a permission at any time.</li>
-                <li><strong>Article 6(1)(f)</strong> — legitimate interests — for keeping the app secure, remembering your preferences, understanding aggregate feature use, diagnosing crashes, and supporting the app through advertising, except where applicable law requires consent.</li>
+                <li><strong>Article 6(1)(a)</strong> — consent — for permissions you grant through iOS (Camera, Location, Notifications), for personalized advertising and for storing or reading information on your device for advertising (see <a href="#83-your-consent-choices">§8.3</a>). Apple's ATT authorization separately controls cross-app tracking and IDFA access. You can withdraw consent or revoke a permission at any time, without affecting processing that happened before.</li>
+                <li><strong>Article 6(1)(f)</strong> — legitimate interests — for keeping the app secure, remembering your preferences, understanding aggregate feature use, diagnosing crashes, and supporting the app through limited (non-personalized) advertising, except where applicable law requires consent.</li>
             </ul>
             <p><strong>Your rights.</strong> Subject to GDPR conditions, you have the rights of access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction (Art. 18), portability (Art. 20), objection (Art. 21), not being subject to solely automated decision-making (Art. 22), which the app does not perform, and withdrawal of consent (Art. 7(3)).</p>
-            <p>Because Finovo keeps your records on your own device and iCloud, the fastest ways to exercise these rights are also the most direct: edit or delete records inside the app, revoke an iOS permission, turn off iCloud sync, or delete the app. For a written response about a specific GDPR right, write to the address in <a href="#20-how-to-reach-us">§20</a> and we will respond within one month (extendable by two months for complex matters, with notice to you).</p>
+            <p>Because Finovo keeps your records on your own device and iCloud, the fastest ways to exercise these rights are also the most direct: edit or delete records inside the app, export them (portability), use <strong>Settings &rarr; Delete account</strong> (erasure), revoke an iOS permission, turn off iCloud sync, or delete the app. For a written response about a specific GDPR right, write to the address in <a href="#20-how-to-reach-us">§20</a> and we will respond within one month (extendable by two months for complex matters, with notice to you).</p>
             <p><strong>Complaints.</strong> You may lodge a complaint with your local supervisory authority:</p>
             <ul>
                 <li>European Data Protection Board: <a href="https://edpb.europa.eu/">edpb.europa.eu</a></li>
